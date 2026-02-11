@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/example/holo/internal/server"
+	"github.com/moroii69/holo/internal/server"
 )
 
 func main() {
