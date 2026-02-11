@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FormEvent, useCallback, useState } from "react";
 
@@ -28,6 +29,15 @@ export default function HomePage() {
 
   return (
     <section>
+      <div className="flex justify-center mb-8">
+        <Image
+          src="/favicon.png"
+          alt="holo"
+          width={200}
+          height={200}
+          priority
+        />
+      </div>
       <h1 className="text-base font-medium text-ink">
         Hand off a file, then leave.
       </h1>

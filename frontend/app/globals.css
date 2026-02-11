@@ -479,6 +479,10 @@ body {
   margin-bottom: 2rem;
 }
 
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
 .gap-1\.5 {
   gap: 0.375rem;
 }
