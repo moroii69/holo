@@ -259,23 +259,20 @@ export default function RoomPage() {
   };
 
   return (
-    <section className="rounded-2xl border border-divider bg-surface px-7 py-7 shadow-soft">
-      <div className="flex items-center justify-between gap-3">
+    <section>
+      <div className="flex items-center justify-between gap-4">
         <div>
-          <h1 className="text-sm font-medium tracking-tight text-ink">
+          <h1 className="text-sm font-medium text-ink">
             Room <span className="font-mono text-muted">{roomId}</span>
           </h1>
-          <p className="mt-1 text-xs text-subtle">
-            Keep this tab open on both sides while you pass the file.
-          </p>
         </div>
         <span
-          className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-medium ${
+          className={`inline-flex items-center gap-1.5 text-xs ${
             status === "connected"
-              ? "bg-green-soft text-green-ink"
+              ? "text-green-ink"
               : status === "connecting"
-              ? "bg-amber-soft text-amber-ink"
-              : "bg-red-soft text-red-ink"
+              ? "text-amber-ink"
+              : "text-red-ink"
           }`}
         >
           <span
@@ -296,39 +293,35 @@ export default function RoomPage() {
       </div>
 
       {errorMessage && (
-        <div className="mt-3 rounded-lg border border-red-soft bg-red-soft px-4 py-3 text-xs text-red-ink">
+        <div className="mt-4 rounded-lg bg-red-soft px-4 py-3 text-xs text-red-ink">
           {errorMessage}
         </div>
       )}
 
       <div
-        className="mt-6 flex flex-col items-center gap-4 rounded-xl border border-dashed border-divider-soft bg-soft px-6 py-7 text-center transition-colors"
+        className="mt-8 flex flex-col items-center rounded-lg border border-dashed border-divider px-6 py-10 text-center"
         onDrop={onDrop}
         onDragOver={onDragOver}
       >
         <p className="text-sm text-subtle">
-          Drop a file here, or pick one from disk. It streams directly, without
-          touching storage.
+          Drop a file here or choose one
         </p>
-        <label className="inline-flex cursor-pointer items-center justify-center rounded-full border border-divider bg-surface px-4 py-2 text-sm font-medium text-ink transition hover:border-ink hover:bg-soft">
+        <label className="mt-4 cursor-pointer rounded-lg border border-divider bg-surface px-5 py-2.5 text-sm font-medium text-ink transition hover:border-ink">
           <input type="file" className="hidden" onChange={onInputChange} />
           Choose file
         </label>
-        <p className="text-xs text-muted">
-          Large files are sent in small chunks to keep memory flat.
-        </p>
       </div>
 
-      <div className="mt-6">
-        <div className="mb-2 text-xs font-medium uppercase tracking-[0.18em] text-muted">
-          Activity
+      <div className="mt-8">
+        <div className="mb-3 text-xs font-medium text-muted uppercase tracking-wider">
+          Transfers
         </div>
         {Object.keys(transfers).length === 0 ? (
-          <div className="rounded-lg border border-divider-soft bg-soft px-4 py-3 text-xs text-subtle">
-            Nothing yet. When a transfer starts, it will appear here.
-          </div>
+          <p className="text-sm text-subtle">
+            No transfers yet.
+          </p>
         ) : (
-          <ul className="flex flex-col gap-3">
+          <ul className="space-y-3">
             {Object.values(transfers)
               .sort((a, b) => a.name.localeCompare(b.name))
               .map((t) => (
@@ -337,37 +330,32 @@ export default function RoomPage() {
                   className="rounded-lg border border-divider-soft bg-soft px-4 py-3"
                 >
                   <div className="flex items-center justify-between gap-4">
-                    <div className="min-w-0">
+                    <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2">
-                        <span className="truncate text-sm font-medium text-ink">
+                        <span className="truncate text-sm text-ink">
                           {t.name}
                         </span>
-                        <span className="text-[11px] font-mono text-muted">
+                        <span className="text-xs text-muted">
                           {formatSize(t.size)}
                         </span>
                       </div>
-                      <div className="mt-1 flex items-center gap-2 text-xs text-muted">
-                        <span className="rounded-full bg-surface px-2 py-0.5 font-medium">
-                          {t.direction === "outgoing" ? "sending" : "receiving"}
-                        </span>
-                        <span>{t.progress}%</span>
+                      <div className="mt-1 text-xs text-muted">
+                        {t.direction === "outgoing" ? "Sending" : "Receiving"} · {t.progress}%
                       </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      {t.url && (
-                        <a
-                          href={t.url}
-                          download={t.name}
-                          className="text-xs font-medium text-ink underline-offset-2 hover:underline"
-                        >
-                          Save
-                        </a>
-                      )}
-                    </div>
+                    {t.url && (
+                      <a
+                        href={t.url}
+                        download={t.name}
+                        className="shrink-0 rounded-lg border border-divider bg-surface px-3 py-1.5 text-xs font-medium text-ink transition hover:border-ink"
+                      >
+                        Save
+                      </a>
+                    )}
                   </div>
-                  <div className="mt-2 h-1.5 w-full rounded-full bg-surface">
+                  <div className="mt-3 h-1 w-full rounded-full bg-divider-soft">
                     <div
-                      className="h-1.5 rounded-full bg-ink-soft transition-[width]"
+                      className="h-1 rounded-full bg-ink transition-[width]"
                       style={{ width: `${t.progress}%` }}
                     />
                   </div>

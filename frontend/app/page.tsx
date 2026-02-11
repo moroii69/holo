@@ -27,38 +27,44 @@ export default function HomePage() {
   );
 
   return (
-    <section className="rounded-2xl border border-divider bg-surface px-8 py-9 shadow-soft">
-      <h1 className="text-xl font-semibold tracking-tight text-ink">
+    <section>
+      <h1 className="text-base font-medium text-ink">
         Hand off a file, then leave.
       </h1>
-      <p className="mt-2 max-w-md text-sm leading-relaxed text-subtle">
-        Create a short-lived room, share the link, and drop a file. The relay
-        just forwards bytes between browsers – nothing is stored.
+      <p className="mt-3 text-sm text-subtle leading-relaxed">
+        Create a room, share the link, drop a file. The relay forwards bytes
+        between browsers — nothing is stored.
       </p>
 
-      <div className="mt-7 space-y-4">
+      <div className="mt-8 space-y-3">
         <button
           type="button"
           onClick={handleCreate}
-          className="inline-flex w-full items-center justify-center rounded-full border border-transparent bg-ink px-4 py-2.5 text-sm font-medium text-sand transition hover:bg-ink-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/70 focus-visible:ring-offset-2 focus-visible:ring-offset-sand"
+          className="w-full rounded-lg bg-ink px-4 py-3 text-sm font-medium text-sand transition hover:bg-ink-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/50 focus-visible:ring-offset-2 focus-visible:ring-offset-sand"
         >
-          Create a new room
+          Create room
         </button>
 
-        <form
-          onSubmit={handleJoin}
-          className="flex items-center gap-2 rounded-full border border-divider-soft bg-soft px-3 py-2"
-        >
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-divider-soft"></div>
+          </div>
+          <div className="relative flex justify-center">
+            <span className="bg-sand px-3 text-xs text-muted">or</span>
+          </div>
+        </div>
+
+        <form onSubmit={handleJoin} className="flex gap-2">
           <input
             type="text"
-            placeholder="Join by room ID"
+            placeholder="Enter room ID"
             value={roomId}
             onChange={(e) => setRoomId(e.target.value)}
-            className="flex-1 border-none bg-transparent px-2 py-1 text-sm text-ink outline-none ring-0"
+            className="flex-1 rounded-lg border border-divider bg-surface px-4 py-3 text-sm text-ink placeholder-muted outline-none transition focus:border-ink"
           />
           <button
             type="submit"
-            className="inline-flex items-center justify-center rounded-full border border-divider bg-surface px-3 py-1.5 text-xs font-medium text-ink transition hover:border-ink hover:bg-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/70 focus-visible:ring-offset-2 focus-visible:ring-offset-soft"
+            className="rounded-lg border border-divider bg-surface px-5 py-3 text-sm font-medium text-ink transition hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/50 focus-visible:ring-offset-2 focus-visible:ring-offset-sand"
           >
             Join
           </button>

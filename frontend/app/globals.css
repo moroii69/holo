@@ -13,6 +13,7 @@ body {
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
     "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 :root {
@@ -119,7 +120,7 @@ body {
 }
 
 .shadow-soft {
-  box-shadow: 0 18px 45px rgba(15, 10, 5, 0.08);
+  box-shadow: 0 12px 30px rgba(15, 10, 5, 0.06);
 }
 
 .min-h-screen {
@@ -283,6 +284,10 @@ body {
   padding-top: 1rem;
 }
 
+.pt-12 {
+  padding-top: 3rem;
+}
+
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -327,6 +332,11 @@ body {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .text-lg {
@@ -382,6 +392,107 @@ body {
   max-width: 36rem;
 }
 
+.max-w-md {
+  max-width: 28rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 0.75rem;
+}
+
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 1rem;
+}
+
+.placeholder-muted::placeholder {
+  color: var(--muted);
+}
+
+.leading-relaxed {
+  line-height: 1.625;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
+}
+
+.h-1 {
+  height: 0.25rem;
+}
+
+.max-w-2xl {
+  max-width: 42rem;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.sm\:px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.sm\:px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.sm\:py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.sm\:py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.sm\:mb-12 {
+  margin-bottom: 3rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.gap-1\.5 {
+  gap: 0.375rem;
+}
+
+.py-2\.5 {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
 .grid {
   display: grid;
 }
@@ -405,9 +516,60 @@ body {
   display: inline-flex;
 }
 
-.antialiased {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.border-none {
+  border: none;
+}
+
+.outline-none {
+  outline: 0;
+}
+
+.transition {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-\[width\] {
+  transition-property: width;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.ring-0 {
+  box-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+}
+
+.focus\:border-ink:focus {
+  border-color: var(--ink);
+}
+
+.focus-visible\:outline-none:focus-visible {
+  outline: 0;
+}
+
+.focus-visible\:ring-2:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring-offset-color, var(--sand)), 0 0 0 4px var(--ring-color, rgba(23, 23, 23, 0.5));
+}
+
+.focus-visible\:ring-ink\/50:focus-visible {
+  --ring-color: rgba(23, 23, 23, 0.5);
+}
+
+.focus-visible\:ring-offset-2:focus-visible {
+  --ring-offset-width: 2px;
+}
+
+.focus-visible\:ring-offset-sand:focus-visible {
+  --ring-offset-color: var(--sand);
+}
+
+.hover\:bg-ink-soft:hover {
+  background-color: var(--ink-soft);
+}
+
+.hover\:border-ink:hover {
+  border-color: var(--ink);
 }
 
 @media (min-width: 768px) {
