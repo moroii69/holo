@@ -1,9 +1,37 @@
 import type { ReactNode } from "react";
+import type { Metadata } from "next";
 import "./globals.css";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "holo – ephemeral file sharing",
-  description: "Minimal peer-to-peer–style file sharing over WebSockets.",
+  description: "Minimal peer-to-peer–style file sharing over WebSockets. No storage, no accounts, just a room and a file.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
+  openGraph: {
+    title: "holo – ephemeral file sharing",
+    description: "Create a room, share the link, drop a file. The relay forwards bytes between browsers — nothing is stored.",
+    url: "https://holo.dev",
+    siteName: "holo",
+    images: [
+      {
+        url: "/holo.png",
+        width: 1200,
+        height: 630,
+        alt: "holo – ephemeral file sharing",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "holo – ephemeral file sharing",
+    description: "Create a room, share the link, drop a file. Nothing is stored.",
+    images: ["/holo.png"],
+  },
+  metadataBase: new URL("https://holo.dev"),
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
