@@ -6,21 +6,34 @@ import (
 	"os"
 	"time"
 
+	"github.com/getsentry/sentry-go"
+	sentryhttp "github.com/getsentry/sentry-go/http"
 	"github.com/moroii69/holo/internal/server"
 )
 
 func main() {
+	if err := sentry.Init(sentry.ClientOptions{
+		Dsn: "https://c2c04ddead625254c60c106b8a02ab08@o4510880614776832.ingest.de.sentry.io/4510880647020624",
+	}); err != nil {
+		log.Printf(`{"level":"error","msg":"sentry_init_failed","error":%q}`, err)
+	}
+	defer sentry.Flush(2 * time.Second)
+
 	addr := getEnv("HOLO_ADDR", ":8080")
 
 	hub := server.NewHub(10 * time.Minute)
 	go hub.Run()
 
+	sentryHandler := sentryhttp.New(sentryhttp.Options{
+		Repanic: true,
+	})
+
 	mux := http.NewServeMux()
-	mux.Handle("/ws", server.NewWSHandler(hub))
-	mux.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
+	mux.Handle("/ws", sentryHandler.Handle(server.NewWSHandler(hub)))
+	mux.HandleFunc("/health", sentryHandler.HandleFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		_, _ = w.Write([]byte("ok"))
-	})
+	}))
 
 	srv := &http.Server{
 		Addr:         addr,
