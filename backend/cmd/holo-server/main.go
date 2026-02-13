@@ -13,7 +13,7 @@ import (
 
 func main() {
 	if err := sentry.Init(sentry.ClientOptions{
-		Dsn: "https://c2c04ddead625254c60c106b8a02ab08@o4510880614776832.ingest.de.sentry.io/4510880647020624",
+		Dsn: os.Getenv("SENTRY_DSN"),
 	}); err != nil {
 		log.Printf(`{"level":"error","msg":"sentry_init_failed","error":%q}`, err)
 	}
