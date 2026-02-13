@@ -5,6 +5,10 @@ Minimalist peer‑to‑peer–style file sharing web app.
 - **Backend**: Go WebSocket relay server (memory‑only, no persistence)
 - **Frontend**: Next.js + TypeScript, HTML5 File APIs, clean light UI
 
+<p align="center">
+  <img src="frontend/public/holo-a.png" alt="holo" width="400">
+</p>
+
 ### Structure
 
 - `backend/` – Go WebSocket relay
