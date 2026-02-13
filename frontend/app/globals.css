@@ -349,7 +349,7 @@ body {
   line-height: 2rem;
 }
 
-.text-[11px] {
+.text-\[11px\] {
   font-size: 0.6875rem;
 }
 
@@ -370,7 +370,7 @@ body {
   text-transform: uppercase;
 }
 
-.tracking-[0.18em] {
+.tracking-\[0\.18em\] {
   letter-spacing: 0.18em;
 }
 
@@ -500,8 +500,7 @@ body {
 .grid {
   display: grid;
 }
-
-.md\:grid-cols-\[minmax\(0,1\.1fr\)_minmax\(0,1fr\)\] {
+.md\:grid-cols-\[minmax\(0\,1\.1fr\)_minmax\(0\,1fr\)\] {
 }
 
 .w-full {
@@ -593,8 +592,9 @@ body {
     margin-top: 0;
   }
 
-  .md\:grid-cols-\[minmax\(0,1\.1fr\)_minmax\(0,1fr\)\] {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  }
+.md\:grid-cols-\[minmax\(0\,1\.1fr\)_minmax\(0\,1fr\)\] {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+}
+
 }
 
